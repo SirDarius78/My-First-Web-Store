@@ -1,19 +1,26 @@
 const menuEmail = document.querySelector('.navbar-email');
 const desktopMenu = document.querySelector('.desktop-menu');
 const productDetailCloseIcon = document.querySelector('.product-detail-close');
+const carritoCloseIcon = document.querySelector('.title-container');
 const burgerMenu = document.querySelector('.menu');
 const mobileMenu = document.querySelector('.mobile-menu');
 const menuCarrito = document.querySelector('.navbar-shopping-cart');
 const shoppingCartContainer = document.querySelector('#shoppingCartContainer');
 const productDetailContainer = document.querySelector('#productDetail');
 const cardsContainer = document.querySelector('.cards-container');
+const productDetailClose  = document.querySelector('.product-detail-close');
+const myordercontentContainer = document.querySelector('.my-order-content')
+
+
 
 menuEmail.addEventListener('click', toggleDesktopMenu);
 burgerMenu.addEventListener('click', toggleMobileMenu);
 menuCarrito.addEventListener('click', toggleCarritoAside);
 productDetailCloseIcon.addEventListener('click', closeProductDetailAside);
+carritoCloseIcon.addEventListener('click',closeArrow);
 
-function toggleDesktopMenu(){
+
+function toggleDesktopMenu() {
     const isAsideClose = shoppingCartContainer.classList.contains('inactive');
 
     if (!isAsideClose) {
@@ -21,7 +28,7 @@ function toggleDesktopMenu(){
     }
 
     desktopMenu.classList.toggle('inactive');
-    productDetailContainer.classList.add('inactive');
+    productDetailContainer.classList.add('inactive');     
 }
 
 function toggleMobileMenu() {
@@ -55,7 +62,6 @@ function toggleCarritoAside() {
         desktopMenu.classList.add('inactive');
     }
 
-
     shoppingCartContainer.classList.toggle('inactive');
 }
 
@@ -67,7 +73,11 @@ function openProductDetailAside() {
 
 function closeProductDetailAside() {
     productDetailContainer.classList.add('inactive');
-    }
+}
+
+function closeArrow() {
+    shoppingCartContainer.classList.add('inactive');
+}
 
 const productList = [];
 
@@ -89,6 +99,11 @@ productList.push({
     image: "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
 });
 
+productList.push({
+    name: 'Bike',
+    price: 120,
+    image: "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+});
 
 function renderProducts(arr) {
     for (product of arr) {
@@ -126,8 +141,8 @@ function renderProducts(arr) {
         productCard.appendChild(productImg);
         productCard.appendChild(productInfo);
     
-        cardsContainer.appendChild(productCard);
-    }
+        cardsContainer.appendChild(productCard);    
+}
 }
 
 renderProducts(productList);
